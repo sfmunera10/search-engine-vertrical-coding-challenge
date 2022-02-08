@@ -1,0 +1,97 @@
+.btn__wrapper {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.card__large {
+    position: relative;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: white;
+    font-size: x-large;
+}
+
+.card__large__image__container {
+    flex: 80;
+}
+
+.card__large__image__container img {
+    width: 100%;
+}
+
+.card__large__body {
+    display: inline-flex;
+    flex: 20;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.card__large__body h2 {
+    color: #424242;
+    margin: 30px 30px 15px;
+}
+
+.card__large__body p {
+    color: #424242;
+    margin: 15px 30px 30px 60px;
+    text-align: left;
+}
+
+.card__small {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    background-color: white;
+    color: white;
+    font-size: large;
+}
+
+.card__small:hover {
+    transition: .17s;
+    transform: translateY(-4px);
+}
+
+.card__small__image__container {
+    flex: 20;
+}
+
+.card__small__body {
+    display: inline-flex;
+    flex: 80;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.card__small__body h2  {
+    margin: 10px;
+}
+
+.card__small__body h2 a {
+    color: #424242;
+    text-decoration: none;
+}
+
+.card__small__body h2 a:hover {
+    color: #003B94;
+}
+
+.card__small__body p {
+    color: #424242;
+    margin: 10px 10px 10px 30px;
+    text-align: left;
+}
+
+@media (max-width: 800px) {
+    .card__large {
+        width: 90vw;
+        font-size: small;
+    }
+
+    .card__small {
+        width: 200px;
+        font-size: small;
+    }
+}
