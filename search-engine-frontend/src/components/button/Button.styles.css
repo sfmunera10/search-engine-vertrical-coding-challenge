@@ -1,0 +1,21 @@
+.btn__primary {
+    background-color: #003B94;
+    color: white;
+    font-size: large;
+}
+
+.btn__primary:hover {
+    transition: .17s;
+    transform: translateY(-4px);
+}
+
+.btn__secondary {
+    background-color: #ADCEFF;
+    color: #212121;
+    font-size: large;
+}
+
+.btn__secondary:hover {
+    transition: .17s;
+    transform: translateY(-4px);
+}
