@@ -14,7 +14,7 @@ const SearchItems: React.FC<{}> = () => {
         className="small"
         border="none"
         borderRadius="8px"
-        cardPhotoUrl="https://cdn.puntosleal.com/lc/images/marketplace/home-banner-slide-2-mb.png"
+        cardPhotoUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Lupinus_polyphyllus_UA_2015_G5.jpg/640px-Lupinus_polyphyllus_UA_2015_G5.jpg"
         altPhotoDescription="Cheems"
         cardTitle="Cheems"
         cardShortDescription="Cheems"
