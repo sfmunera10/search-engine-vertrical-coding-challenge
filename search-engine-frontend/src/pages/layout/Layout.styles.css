@@ -1,0 +1,19 @@
+.layout__container{
+    text-align: center;
+}
+
+.header {
+    text-transform: uppercase;
+    font-size: x-large;
+    font-weight: bold;
+    margin: 30px;
+    color: #424242;
+    z-index: 1;
+}
+
+.footer {
+    font-size: medium;
+    margin: 30px;
+    color: #424242;
+    z-index: 1;
+}
