@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+.search__field {
+    display: flex;
+    width: 90%;
+    position: relative;
+    align-items: center;
+}
+
+.search__field__box {
+    width: 100%;
+    border-radius: 8px;
+    padding: 20px 30px;
+    font-size: x-large;
+    border: none;
+    transition: 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+}
+
+.search__field__box:focus {
+    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.4);
+}
+
+.search__field__submit {
+    position: absolute;
+    width: 120px;
+    height: 50px;
+    margin: 0 12px 0 0;
+    border-radius: 8px;
+    right: 0px;
+    border: none;
+    transition: 0.2s all;
+}
+
+.todos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+    .search__field__box {
+        padding: 30px 20px;
+        font-size: small;
+    }
+}

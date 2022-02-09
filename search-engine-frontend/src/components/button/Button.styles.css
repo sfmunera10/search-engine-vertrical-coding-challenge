@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
 .btn__primary {
     background-color: #003B94;
     color: white;
     font-size: large;
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .btn__primary:hover {
@@ -11,8 +15,10 @@
 
 .btn__secondary {
     background-color: #ADCEFF;
-    color: #212121;
+    color: #424242;
     font-size: large;
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .btn__secondary:hover {
