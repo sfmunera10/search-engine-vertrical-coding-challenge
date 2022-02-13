@@ -3,5 +3,6 @@ export const PATH = {
     SEARCH_ITEMS: "/search/items",
     ITEM_DETAIL: "/item/:id",
     ITEM_DETAIL_NO_PARAM: "/item",
-    NOT_FOUND: "*"
+    NOT_FOUND: "*",
+    NOT_FOUND_NO_PARAM: "/404"
 }

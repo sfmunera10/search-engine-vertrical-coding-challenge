@@ -7,7 +7,6 @@ interface Props {
     className: "small" | "large";
     border: string;
     borderRadius: string;
-    cardId: number;
     cardPhotoUrl: string;
     altPhotoDescription: string;
     cardTitle: string;
@@ -20,7 +19,6 @@ const Card: React.FC<Props> = ({
     className,
     border,
     borderRadius,
-    cardId,
     cardPhotoUrl,
     altPhotoDescription,
     cardTitle,
@@ -78,7 +76,10 @@ const Card: React.FC<Props> = ({
                     border,
                     borderRadius
                 }}
-            > <img src={cardPhotoUrl}
+            > <img src={cardPhotoUrl} onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = "/ImgNotAvailable.jpg";
+            }}
                 alt={altPhotoDescription}
                 style={{
                     border,
