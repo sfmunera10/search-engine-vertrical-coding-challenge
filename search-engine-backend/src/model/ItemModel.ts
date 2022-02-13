@@ -1,9 +1,9 @@
-import { Item } from "../types/Item";
-import { db } from "../db";
+import { Item } from "../entities/Item";
+import { db } from "../config/db";
 import { RowDataPacket } from "mysql2";
-import ErrorHandler from "../utils/ErrorHandler";
+import { ErrorHandler } from "../utils";
 
-export const findOne = (itemId: number, itemTitle: string, callback: Function) => {
+export const findOneByIdAndTitle = (itemId: number, itemTitle: string, callback: Function) => {
     const queryString = `SELECT * FROM item WHERE id=? AND title=?`;
 
     db.query(queryString, [itemId, itemTitle], (err, result) => {
@@ -24,7 +24,7 @@ export const findOne = (itemId: number, itemTitle: string, callback: Function) =
     });
 }
 
-export const findAll = (itemTitle: string, callback: Function) => {
+export const findAllByTitle = (itemTitle: string, callback: Function) => {
     const itemTitleMatch = `%${itemTitle}%`;
     const queryString = `SELECT * FROM item WHERE title like ?`;
 

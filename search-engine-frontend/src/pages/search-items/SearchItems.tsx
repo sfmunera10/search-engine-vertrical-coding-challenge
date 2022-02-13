@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import SearchField from "../../components/search-field/SearchField";
-import { ITEMS_API_BASE_URL } from "../../constants/ClientAPIBaseURL";
 import "./SearchItems.styles.css";
 import ItemsList from "./items-list/ItemsList";
 import { Item } from "../../interfaces/Item";
 import { useSearchParams } from "react-router-dom";
+import { searchItemsByTitle } from "../../services/ItemService";
+import Loader from "../../components/loader/Loader";
 
 const SearchItems: React.FC<{}> = () => {
   const [searchQueryParams] = useSearchParams();
@@ -12,29 +13,24 @@ const SearchItems: React.FC<{}> = () => {
 
   const [itemsQuery, setItemsQuery] = useState<string | null>(resultsQuery);
   const [itemsFound, setItemsFound] = useState<Item[]>([]);
-
-  const searchItemsByTitle = async (titleQuery: string, abortControllerSignal?: AbortSignal): Promise<Item[]> => {
-    const encodedItemsQuery = encodeURIComponent(titleQuery);
-    const result = await fetch(`${ITEMS_API_BASE_URL}?title=${encodedItemsQuery}`, {
-      signal: abortControllerSignal || null
-    });
-    if (abortControllerSignal && abortControllerSignal.aborted) {
-      console.log("Aborted");
-    }
-    return (await result.json()).data;
-  };
+  const [itemsNotFound, setItemsNotFound] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSearch = async (event?: React.FormEvent<HTMLFormElement>, abortControllerSignal?: AbortSignal) => {
     if (event) {
       event.preventDefault();
     }
-    if (itemsQuery) {
-      const response = await searchItemsByTitle(itemsQuery, abortControllerSignal);
-      setItemsFound(response);
+    if (itemsQuery !== null) {
+      setLoading((loading) => !loading);
+      const result = await searchItemsByTitle(itemsQuery, abortControllerSignal);
+      setItemsNotFound(!result.length);
+      setItemsFound(result);
+      setLoading((loading) => !loading);
     }
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const abortController = new AbortController();
     if (resultsQuery) {
       setItemsQuery(resultsQuery);
@@ -51,7 +47,7 @@ const SearchItems: React.FC<{}> = () => {
       backgroundRepeat: "repeat"
     }}>
       <SearchField searchQuery={itemsQuery} setSearchQuery={setItemsQuery} handleSearch={handleSearch} />
-      <ItemsList itemsFound={itemsFound} resultsQuery={itemsQuery} />
+      {loading ? (<Loader />) : (<ItemsList itemsFound={itemsFound} itemsNotFound={itemsNotFound} resultsQuery={itemsQuery} />)}
       <a href='https://www.freepik.com/vectors/background'>
         Background vector created by Sketchepedia - www.freepik.com
       </a>

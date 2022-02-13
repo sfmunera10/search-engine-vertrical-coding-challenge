@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PATH } from "../../constants/Path";
 import "./NotFound.styles.css"
 
 const NotFound: React.FC<{}> = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className="not__found" style={{
             backgroundImage: `url(/BgImg.png)`,

@@ -2,6 +2,7 @@
 
 .btn__primary {
     background-color: #003B94;
+    cursor: pointer;
     color: white;
     font-size: large;
     font-weight: bold;
@@ -20,6 +21,7 @@
 
 .btn__secondary {
     background-color: #ADCEFF;
+    cursor: pointer;
     color: #424242;
     font-size: large;
     font-weight: bold;

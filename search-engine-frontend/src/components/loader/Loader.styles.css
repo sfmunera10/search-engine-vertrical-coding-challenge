@@ -1,10 +1,5 @@
 #loader__spinner.spinner {
-    left: 50%;
-    margin-left: -20px;
-    top: 50%;
-    margin-top: -20px;
-    position: absolute;
-    z-index: 19 !important;
+    margin: 30px;
     animation: loader__spinner 400ms linear infinite;
 }
 
@@ -12,7 +7,7 @@
     width: 40px;
     height: 40px;
     border:  solid 4px transparent;
-    border-top-color:  #ADCEFF !important;
+    border-top-color:  #003B94 !important;
     border-left-color: #ADCEFF !important;
     border-radius: 50%;
 }

@@ -2,10 +2,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "../components/loader/Loader";
 import AppContainer from "../pages/app-container/AppContainer";
-import SearchItems from "../pages/search-items/SearchItems";
 import NotFound from "../pages/not-found/NotFound";
 import { PATH } from "../constants/Path";
 
+const SearchItems = lazy(() => import("../pages/search-items/SearchItems"));
 const ItemDetail = lazy(() => import("../pages/item-detail/ItemDetail"));
 
 export default function RoutesConfig() {

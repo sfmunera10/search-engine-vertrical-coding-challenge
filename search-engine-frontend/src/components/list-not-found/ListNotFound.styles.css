@@ -1,0 +1,16 @@
+.list__not__found {
+    text-align: center;
+    border-radius: 8px;
+    color: #424242;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: x-large;
+    margin: 30px;
+}
+
+@media (max-width: 800px) {
+    .list__not__found {
+        padding: 5px;
+        font-size: small;
+    }
+}

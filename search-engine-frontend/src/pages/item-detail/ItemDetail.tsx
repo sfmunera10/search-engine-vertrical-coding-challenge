@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams, useParams } from "react-router-dom";
+import { useSearchParams, useParams, Navigate } from "react-router-dom";
 import Card from "../../components/card/Card";
 import "./ItemDetail.styles.css";
 import { Item } from "../../interfaces/Item";
-import { ITEMS_API_BASE_URL } from "../../constants/ClientAPIBaseURL";
 import { PATH } from "../../constants/Path";
+import { getItem } from "../../services/ItemService";
+import Loader from "../../components/loader/Loader";
 
 const ItemDetail: React.FC<{}> = () => {
 
@@ -14,38 +15,37 @@ const ItemDetail: React.FC<{}> = () => {
   const resultsQuery = searchQueryParams.get("results");
 
   const [item, setItem] = useState<Item | null>(null);
+  const [itemNotFound, setItemNotFound] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const abortController = new AbortController();
-
-    const getItem = async () => {
-      const result = await fetch(`${ITEMS_API_BASE_URL}/${id}?title=${titleQuery}`, {
-        signal: abortController.signal
-      });
-      if (!abortController.signal.aborted) {
-        let itemResult = (await result.json()).data;
-        setItem(itemResult);
-      }
+    const getItemResult = async () => {
+      const itemResult = await getItem(id!, titleQuery!, abortController.signal);
+      setItemNotFound(!itemResult);
+      setItem(itemResult);
     };
-    if (titleQuery) {
-      getItem();
+    if (id && titleQuery) {
+      setLoading((loading) => !loading);
+      getItemResult();
+      setLoading((loading) => !loading);
     }
     return () => {
       abortController.abort();
     };
-  }, [titleQuery]);
+  }, [id, titleQuery]);
 
   return (
     <div className="item__detail__container" style={{
       backgroundImage: `url(/BgImg.png)`,
       backgroundRepeat: "repeat"
     }}>
-      {item && (
+      {loading ? (<Loader />) : itemNotFound ? (<Navigate to={PATH.NOT_FOUND_NO_PARAM} />) : item && (
         <Card
           className="large"
           border="none"
           borderRadius="8px"
-          cardId={item.id}
           cardPhotoUrl={item.photoURL}
           altPhotoDescription={item.title}
           cardTitle={item.title}
