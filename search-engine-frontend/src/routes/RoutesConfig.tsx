@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "../components/loader/Loader";
-import Layout from "../pages/layout/Layout";
+import AppContainer from "../pages/app-container/AppContainer";
 import SearchItems from "../pages/search-items/SearchItems";
 import NotFound from "../pages/not-found/NotFound";
 import { PATH } from "../constants/Path";
@@ -11,7 +11,7 @@ const ItemDetail = lazy(() => import("../pages/item-detail/ItemDetail"));
 export default function RoutesConfig() {
   return (
     <Routes>
-      <Route path={PATH.MAIN_LAYOUT} element={<Layout />}>
+      <Route path={PATH.MAIN_LAYOUT} element={<AppContainer />}>
         <Route index element={<Navigate to={PATH.SEARCH_ITEMS} />} />
         <Route
           path={PATH.SEARCH_ITEMS}

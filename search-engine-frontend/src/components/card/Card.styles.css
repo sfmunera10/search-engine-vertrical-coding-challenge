@@ -12,6 +12,7 @@
     background-color: white;
     color: white;
     font-size: x-large;
+    margin: 30px 10px;
 }
 
 .card__large__image__container {
@@ -47,6 +48,7 @@
     background-color: white;
     color: white;
     font-size: large;
+    margin: 20px 10px;
 }
 
 .card__small:hover {

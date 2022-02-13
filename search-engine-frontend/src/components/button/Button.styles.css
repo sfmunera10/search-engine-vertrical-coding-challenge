@@ -8,6 +8,11 @@
     font-family: 'DM Sans', sans-serif;
 }
 
+.btn__primary a {
+    color: white;
+    text-decoration: none;
+}
+
 .btn__primary:hover {
     transition: .17s;
     transform: translateY(-4px);
@@ -24,4 +29,9 @@
 .btn__secondary:hover {
     transition: .17s;
     transform: translateY(-4px);
+}
+
+.btn__secondary a {
+    color: #424242;
+    text-decoration: none;
 }

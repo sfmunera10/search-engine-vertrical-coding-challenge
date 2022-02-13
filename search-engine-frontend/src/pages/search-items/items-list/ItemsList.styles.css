@@ -1,0 +1,7 @@
+.items__list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 30px;
+}

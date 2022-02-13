@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  mysqldb:
+  db:
     image: mysql
     restart: unless-stopped
     env_file: ./.env
@@ -16,7 +16,7 @@ services:
       - backend
   search-engine-backend:
     depends_on:
-      - mysqldb
+      - db
     build: ./search-engine-backend
     restart: unless-stopped
     env_file: ./.env
@@ -25,7 +25,7 @@ services:
     environment:
       - NODE_ENV=$NODE_ENV
       - NODE_LOCAL_PORT=$NODE_LOCAL_PORT
-      - MYSQLDB_HOST=$MYSQLDB_HOST
+      - MYSQLDB_HOST=db
       - MYSQLDB_USER=$MYSQLDB_USER
       - MYSQLDB_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
       - MYSQLDB_DATABASE=$MYSQLDB_DATABASE
@@ -40,7 +40,7 @@ services:
     build:
       context: ./search-engine-frontend
       args:
-        - CLIENT_API_BASE_URL=$CLIENT_API_BASE_URL
+        - ITEMS_API_BASE_URL=$ITEMS_API_BASE_URL
     env_file: ./.env
     ports:
       - $REACT_LOCAL_PORT:$REACT_LOCAL_PORT
