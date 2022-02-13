@@ -1,31 +1,32 @@
 import React from "react";
 import "./Card.styles.css"
 import Button from "../button/Button";
+import { Link } from "react-router-dom";
 
 interface Props {
     className: "small" | "large";
     border: string;
     borderRadius: string;
+    cardId: number;
     cardPhotoUrl: string;
     altPhotoDescription: string;
     cardTitle: string;
     cardShortDescription: string;
     cardFullDescription: string;
     cardDetailRedirectUrl: string;
-    isRedirectUrlActive: boolean;
 }
 
 const Card: React.FC<Props> = ({
     className,
     border,
     borderRadius,
+    cardId,
     cardPhotoUrl,
     altPhotoDescription,
     cardTitle,
     cardShortDescription,
     cardFullDescription,
     cardDetailRedirectUrl,
-    isRedirectUrlActive
 }) => {
     return className === "small" ? (
         <div
@@ -47,7 +48,7 @@ const Card: React.FC<Props> = ({
             </div>
             <div className="card__small__body">
                 <h2>
-                    <a href="https://www.google.com/">{cardTitle}</a>
+                    <Link to={cardDetailRedirectUrl}>{cardTitle}</Link>
                 </h2>
                 <p>{cardShortDescription}</p>
             </div>
@@ -65,11 +66,10 @@ const Card: React.FC<Props> = ({
                     className="secondary"
                     type="button"
                     height="50px"
-                    onClick={() => console.log("You clicked on the pink circle!")}
                     border="none"
                     borderRadius="8px"
                     width="120px"
-                    childrenText="Go back"
+                    childrenText={<Link to={cardDetailRedirectUrl}>Go back</Link>}
                 />
             </div>
             <div

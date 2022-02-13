@@ -1,7 +1,9 @@
 import dotenv from "dotenv";
-import express, { Request, Response, NextFunction } from 'express';
-import MainRouter from './router/MainRouter';
-import ErrorHandler from './model/ErrorHandler';
+import express, { Request, Response, NextFunction } from "express";
+import MainRouter from "./router/MainRouter";
+import ErrorHandler from "./utils/ErrorHandler";
+import cors from "cors";
+import helmet from "helmet"
 
 // load the environment variables from the .env file
 dotenv.config({
@@ -20,19 +22,29 @@ class Server {
 // initialize server app
 const server = new Server();
 
-// make server app handle any route starting with '/api'
-server.app.use('/api', server.router);
+//Use helmet
+server.app.use(helmet());
+
+// Accept CORS only from React Frontend Client Origin
+server.app.use(cors({
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+    credentials: true,
+}));
+
+// make server app handle any route starting with "/api"
+server.app.use("/api", server.router);
 
 // make server app handle any error
-server.app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
+server.app.use((err: ErrorHandler, _: Request, res: Response, __: NextFunction) => {
     res.status(err.statusCode || 500).json({
         status: "error",
+        errorCode: err.errorCode,
         statusCode: err.statusCode,
         message: err.message
     });
 });
 
 // make server listen on some port
-((port = process.env.NODE_LOCAL_PORT || 5000) => {
+((port = process.env.NODE_LOCAL_PORT || 8080) => {
     server.app.listen(port, () => console.log(`> Listening on port ${port}`));
 })();
