@@ -13,13 +13,23 @@ Folder structure for this project contains:
 - mysql-dump folder: includes a .sql file to import as DDL and Sample data set to a MySQL Database. This database can be installed locally either from the official site: https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/ or by using the docker-compose-yml configuration file provided at the root folder (NOTE: You need to have docker installed in your machine with docker-compose enabled and working properly - see NOTE ON DOCKER for docker usage details). Also, you need to configure specific credentials for a working database for this app (you can check these credentials in the sample .env file - see NOTE ON DOTENV FILES for more details).
 - search-engine-backend folder: Folder for the backend side of the application. To run it manually without using docker use these commands inside of this folder (NOTE: You need to copy the sample .env file in this folder as well for env variables to work properly - see NOTE ON DOTENV FILES for more details):
 
+For installing dependencies:
+
     npm install
-    npm run dev
+
+For starting the frontend application
+
+    npm start 
 
 - search-engine-frontend folder: Folder for the frontend side of the application. To run it manually without using docker use these commands inside of this folder (NOTE: You need to copy the sample .env file in this folder as well for env variables to work properly - see NOTE ON DOTENV FILES for more details):
 
+For installing dependencies:
+
     npm install
-    npm start
+
+For starting the frontend application
+
+    npm start 
 
 **NOTE ON DOCKER**: In order to run the full application (frontend, backend & database) using docker (specifically docker compose), run these commands:
 
