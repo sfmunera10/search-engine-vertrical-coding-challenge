@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import SearchItems from './SearchItems';
 
 test('Tests this component', () => {
-  render(<App />);
+  //render(<SearchItems />);
 });

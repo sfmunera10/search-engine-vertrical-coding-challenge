@@ -7,7 +7,6 @@ import helmet from "helmet"
 
 // load the environment variables from the .env file
 dotenv.config({
-    path: ".env"
 });
 
 /**

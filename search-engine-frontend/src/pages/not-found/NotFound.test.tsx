@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import NotFound from './NotFound';
 
 test('Tests this component', () => {
-  render(<App />);
+  //render(<NotFound />);
 });
