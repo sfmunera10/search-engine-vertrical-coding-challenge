@@ -21,13 +21,23 @@ Folder structure for this project contains:
     npm install
     npm start
 
-**NOTE ON DOCKER**: In order to run the full application (frontend, backend & database) using docker (specifically docker compose), run these commands (at root folder):
+**NOTE ON DOCKER**: In order to run the full application (frontend, backend & database) using docker (specifically docker compose), run these commands:
 
-To deploy the full application:
+First, remove build folders (if they exist) both in frontend and backend directories (dist for backend, build for frontend). Then run:
+
+At the search-engine-backend folder:
+
+    npm run build
+
+At the search-engine-frontend folder:
+
+    npm run build
+
+To deploy the full application (at root folder):
 
     docker-compose -f "docker-compose.yml" up -d --build
 
-To remove all application deployments: 
+To remove all application deployments (at root folder): 
 
     docker-compose -f "docker-compose.yml" down
 
